@@ -7,15 +7,15 @@ var conteudoBtns = ["%"  ,  "CE" ,   "C"   , "backspace",
                     "+/-",  "0"  ,   ","   , "="];
 
 var funcoesBtns = ["operacoesEspeciais('P')", "limparDados(false)", "limparDados()", "apagarCaracter()",
-                    "operacoesEspeciais('D')", "operacoesEspeciais('E')", "operacoesEspeciais('R')", "calculoAritmetico('*')",
+                    "operacoesEspeciais('D')", "operacoesEspeciais('E')", "operacoesEspeciais('R')", "calculoAritmetico('/')",
                     "addDisplay(7)", "addDisplay(8)", "addDisplay(9)", "calculoAritmetico('*')", 
                     "addDisplay(4)", "addDisplay(5)", "addDisplay(6)", "calculoAritmetico('-')",
                     "addDisplay(1)", "addDisplay(2)", "addDisplay(3)", "calculoAritmetico('+')", 
                     "inverterSinal()", "addDisplay(0)","addPonto()", "calculoAritmetico('=')"]; 
 
 
+//criando os botoes da calculadora
 criarBotoesCalc();
-
 
 //cria os botoes do teclado
 function criarBotoesCalc() {
@@ -28,7 +28,8 @@ function criarBotoesCalc() {
 
 }
 
-function criarLinhasBtns(indiceInicio, indiceFim) { // botao-numeros, "botao-operacoes"
+//criando as linhas com 5 botoes cada
+function criarLinhasBtns(indiceInicio, indiceFim) { 
     let container = document.querySelector(".container-botoes-calc");
     let div = criarTag("div");
     let btn;
@@ -141,8 +142,7 @@ function ativarHistorico(parametro) {
     }
 }
 
-
-//controlar o tamanho da tela para mudar o display
+//Controlar o tamanho da tela para mudar o display
 window.addEventListener('resize', function () {
     var largura = window.innerWidth;
 

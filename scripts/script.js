@@ -98,6 +98,7 @@ function calcular() {
 
 /* === Sub operações ===*/
 
+
 //efetua as operações especiais
 function operacoesEspeciais(parametro) {
     let valor = Number(display.value);
@@ -160,22 +161,6 @@ function inverterSinal() {
         else {
             display.value = "-" + valor;
         }
-    }
-}
-
-//somar ou diminuir memoria
-function maisOuMenosMemoria(parametro) {
-    
-    if (memoria.length > 0) {
-        let aux = memoria.length - 1;
-        if(parametro == '+') {
-            memoria [aux] += Number(display.value);
-        }
-        else {
-            memoria [aux] -= Number(display.value);
-        }
-
-        carregarMemoria();
     }
 }
 
@@ -292,11 +277,16 @@ function repetirUltimaOperacao() {
    subDisplay.innerHTML = `${pilha[0]} ${auxSinal} ${ultimosValores[1]} = `;
     display.value = pilha[0];
 
-    
+    let array     = [2];
 
+    //criando uma array by dimencional
+    array[0] = `${pilha[0]} ${auxSinal} ${ultimosValores[1]} =`;
+    array[1] = pilha[0];
 
+    historico.push(array);
 
-    addHistorico();
+    carregarHistorico();
+ 
 }
 
 //para limpar os vetores
@@ -307,7 +297,7 @@ function limparVetor(vetor) {
 }
 
 
-/* FUNCÇÕES DA MEMORIA  */
+/* == FUNCÇÕES DO HISTÓRICO ==  */
 
 
 //adiciona no historico
@@ -359,7 +349,8 @@ function limparHistorico(){
 }
 
 
-/* FUNCÇÕES DA MEMORIA  */
+/* == FUNÇÕES DA MEMORIA == */
+
 
 //inserir na memoria
 function addMemoria(){
@@ -407,4 +398,21 @@ function pegarMemoria() {
 //joga memorria no display
 function jogarMemoriaDisplay(parametro) {
     display.value = memoria[parseInt(parametro)];
+}
+
+//somar ou diminuir memoria
+function maisOuMenosMemoria(parametro) {
+    
+    if (memoria.length > 0) {
+        let aux = memoria.pop();
+        if(parametro == '+') {
+            aux += Number(display.value);
+        }
+        else {
+            aux -= Number(display.value);
+        }
+
+        memoria.push(aux);
+        carregarMemoria();
+    }
 }
