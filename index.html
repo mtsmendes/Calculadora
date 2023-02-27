@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css" type="text/css"/>
+   <script src="scripts/script.js" defer></script>
+    <script src="scripts/controle.js" defer></script>
+
+    <!--importação de icons-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+
+
+    <title>Calculadora</title>
+</head>
+<body>
+    <main class="principal">
+    <!--Inicio calculadora-->
+        <div class="container-calculadora">
+
+            <!--Primeiro container-->
+            <header class="container-titulo">
+                <span class="material-symbols-outlined" style="cursor: default;">calculate</span>
+                <label>Calculadora</label>
+            </header>
+
+            <!--Segundo container-->
+            <section class="container-menu">
+                <div class="menu-parte-um">
+                    <div class="icones-menu">
+                        <abbr title="Abrir menu"><span class="material-symbols-outlined icone-menu"> menu</span></abbr>
+                    </div>
+                    <div class="icones-menu">
+                        <label>Padrão</label>
+                    </div>
+                    <div class="icones-menu">
+                        <abbr title="Expandir" onclick="ativarAuxiliares()"><span class="material-symbols-outlined icone-menu">expand_content</span></abbr>
+                    </div>
+                </div>
+                <div class="menu-parte-dois">
+                    <abbr title="Acessar histórico"><span class="material-symbols-outlined icone-menu" onclick="ativarAuxiliares(true)">history </span></abbr>
+                </div>
+            </section>
+
+            <!--Terceiro container-->
+            <div class= "container-mostrar-dados">
+
+                <!--Displays container-->
+                <div class="container-todos-displays">
+                    <div class= "container-sub-display">
+                        <span class= "sub-display"></span>
+                    </div>
+                    <div class= "container-display">
+                        <input class= "display" type="text" oninput="this.value = this.value.replace(/[^0-9.]/, '');"/> 
+                        <!--Fazendo a filtragem para substituir por vazio-->
+                    </div>
+
+                <!--Memoria container-->
+                </div>
+                <div class= "container-btn-memoria">
+                        <button class= "botao-memoria" onclick="limpaMemoria()">MC</button>
+                        <button class= "botao-memoria" onclick="pegarMemoria() ">MR</button>
+                        <button class= "botao-memoria" onclick="maisOuMenosMemoria('+')">M+</button>
+                        <button class= "botao-memoria" onclick="maisOuMenosMemoria('-')">M-</button>
+                        <button class= "botao-memoria" onclick="addMemoria()">MS</button>
+                        <button class= "botao-memoria" onclick="ativarAuxiliares(true, 'M')" id="btn-mostrar-memoria">M°</button>
+                </div>
+
+                <!--Botoees container-->
+                <div class="container-botoes-calc">
+                    <!--Cria via JS-->
+                </div>
+            </div>
+
+        </div>
+    <!--Fim calculadora-->
+
+        <!--inicio auxiliares-->
+        <div class="container-auxiliares">
+            <div class="principal-auxiliares">
+                <div class="auxiliar-botoes">
+                    <button class="botoes-aux" id="btn-historico" onclick="ativarHistorico(true)">Histórico</button>
+                    <button class="botoes-aux" id="btn-memoria" onclick="ativarHistorico(false)">Memória</button>
+                </div>
+                <div class="containers">
+                    <div class="container-historico">
+                        <div class="armazena-historico armazena-geral">
+                        </div>
+                        <span class="material-symbols-outlined icone-lixeira" onclick="limparHistorico()">delete </span>
+                    </div>
+                    
+                    <div class="container-memoria">
+                        <div class="armazena-memoria armazena-geral">
+                                   
+                        </div>
+                        <span class="material-symbols-outlined icone-lixeira" onclick="limpaMemoria()">delete </span>
+                    </div>
+                </div>
+                <div class="container-texto">
+                    <textarea class="anotacoes" placeholder="Digite as suas anotações"></textarea>
+                </div>
+            </div>
+        </div>
+        <!--Fim auxiliares-->
+    </main>
+</body>
+</html>
